@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQueryMobile.val()練習</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="themes\jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="themes\text.min.css">
+    <link rel="stylesheet" href="themes\text.css">
+    <script>//改寫
+        $(document).on("pagecreate","#page",function(){
+            $("#button1").on("click",function(){
+                var msg = " " ;
+                    $("input[type='checkbox']:checked").each(function(){ msg += $(this).val()+" ";});
+                
+                alert(
+                        "姓名："+ $("#username").val()+"\n"+
+                        "信箱："+ $("#mail").val()+"\n"+
+                        "密碼："+ $("#password").val()+"\n"+
+                        "電話："+ $("#phonenumber").val()+"\n"+
+                        "日期："+ $("#datetime").val()+"\n"+
+                        "性別："+ $("input[name=sexual]:checked").val()+"\n"+
+                        "用過的品牌："+ msg +"\n"+//$("input[type='checkbox']:checked").each(function(){$(this).val();})
+                        "電信：" + $("#telecom").val()+"\n"+
+                        "滿意度："+ $("#point").val()+"\n"+
+                        "接受最新消息："+ $("#slider").val()
+                ); 
+                  
+            });
+        });
+        
+    </script>
+    <!--<script>
+        $(document).on("pagecreate","#page",function(){
+            $("#button1").on("click",function(){
+                var msg  = "姓名："+ $("#username").val()+"\n";//;是結束的意思，{}函數不用包;，其他情況要判斷是不是需要結束來加;
+                    msg += "信箱："+ $("#mail").val()+"\n";
+                    msg += "密碼："+ $("#password").val()+"\n";
+                    msg += "電話："+ $("#phonenumber").val()+"\n";
+                    msg += "日期："+ $("#datetime").val()+"\n";
+                    msg += "性別："+ $("input[name='sexual']:checked").val()+"\n";
+                    msg1 = "用過的品牌："; $("input[type='checkbox']:checked").each(function(){msg1 += $(this).val()+" ";});
+                    msg += msg1+"\n";
+                    msg += "電信："+ $("#telecom").val()+"\n";
+                    msg += "滿意度：" + $("#point").val()+"\n";
+                    msg += "接收最新消息：" +$("#slider").val()+"\n";
+
+
+
+
+                alert(msg);
+            });
+        });//式子後面除了備註不要加東西，系統會動不了
+    </script>-->
+    
+</head>
+<body>
+    <div data-role="page" id="page">
+        <div data-role="header" data-position="fixed">
+            <h1>表單</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form method="post" action="demoform.php">
+                <label for="username">姓名：</label>
+                <input id="username" type="text" name="username" placeholder="姓名" data-clear-btn="true">
+
+                <label for="mail">郵件信箱：</label>
+                <input id="mail" type="email" name="mail" placeholder="信箱" data-clear-btn="true">
+
+                <label for="password">密碼：</label>
+                <input id="password" type="password" name="password" placeholder="密碼" data-clear-btn="true">
+
+                <label for="phonenumber">電話：</label>
+                <input id="phonenumber" type="tel" name="phonenumber" placeholder="電話" data-clear-btn="true">
+
+                <label for="datetime">時間：</label>
+                <input id="datetime" type="datetime-local" name="datetime" placeholder="日期時間" data-clear-btn="true">
+                
+                <h1>性別</h1>
+                <fieldset data-role="controlgroup">
+                    <label for="sexual1">男</label>
+                    <input id="sexual1" type="radio" name="sexual" value="male" checked="">
+                    <label for="sexual2">女</label>
+                    <input id="sexual2" type="radio" name="sexual" value="female">
+                    <label for="sexual3">其他</label>
+                    <input id="sexual3" type="radio" name="sexual" value="其他">
+                </fieldset> 
+
+                <h3>使用過的手機品牌</h3>
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <label for="phonebrand1">Apple</label>
+                    <input id="phonebrand1" type="checkbox" name="phonebrand" value="apple" checked="">
+
+                    <label for="phonebrand2">Samsung</label>
+                    <input id="phonebrand2" type="checkbox" name="phonebrand" value="samsung" >
+
+                    <label for="phonebrand3">OPPO</label>
+                    <input id="phonebrand3" type="checkbox" name="phonebrand" value="oppo" >
+
+                    <label for="phonebrand4">Redmi</label>
+                    <input id="phonebrand4" type="checkbox" name="phonebrand" value="redmi">
+
+                    <label for="phonebrand5">Vivo</label>
+                    <input id="phonebrand5" type="checkbox" name="phonebrand" value="vivo">
+
+                    <label for="phonebrand6">Realme</label>
+                    <input id="phonebrand6" type="checkbox" name="phonebrand" value="realme">
+
+                    <label for="phonebrand7">Sony</label>
+                    <input id="phonebrand7" type="checkbox" name="phonebrand" value="sony">
+
+                    <label for="phonebrand8">Google</label>
+                    <input id="phonebrand8" type="checkbox" name="phonebrand" value="google">
+                    
+                    <label for="phonebrand9">ASUS</label>
+                    <input id="phonebrand9" type="checkbox" name="phonebrand" value="asus">
+
+                    <label for="phonebrand10">ROG</label>
+                    <input id="phonebrand10" type="checkbox" name="phonebrand" value="rog">
+                </fieldset>
+
+                <label for="telecom">請選擇使用哪家電信公司：</label>
+                <select name="telecom" id="telecom">
+                    <option value="TM">台湾大哥大</option>
+                    <option value="CH">中華電信</option>
+                    <option value="FET">遠傳電信(亞太)</option>
+                    <option value="TS">台灣之星</option>
+                </select>
+
+                <label for="point">使用滿意度</label>
+                <input id="point" type="range" name="point" value="50" min="0" max="100">
+
+                <h4>是否接收最新消息?</h4>
+                <select name="slider" id="slider" name="slider" data-role="slider">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+                </select>
+            
+                <button id="button1">送出</button>
+            </form>
+        </div>
+        <div data-role="footer"></div>
+
+    </div>
+   
+</body>
+</html>
